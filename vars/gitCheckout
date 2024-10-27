@@ -1,0 +1,11 @@
+def calling(String giturl,String branchName,String credID) {
+    
+        checkout([
+            $class: 'GitSCM',
+            branches: [[name: branchName]],
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [],
+            userRemoteConfigs: [[url: giturl, credentialsId: credID]]
+        ])
+    }
+
