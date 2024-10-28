@@ -1,11 +1,13 @@
-def calling(String giturl,String branchName,String credID) {
-    
+def calling(Map config) {
+    echo "URL:${config.giturl}"
+    echo "URL:${config.branchName}"
+    echo "URL:${config.credID}"
         checkout([
             $class: 'GitSCM',
-            branches: [[name: branchName]],
+            branches: [[name: config.branchName]],
             doGenerateSubmoduleConfigurations: false,
             extensions: [],
-            userRemoteConfigs: [[url: giturl, credentialsId: credID]]
+            userRemoteConfigs: [[url:config.giturl, credentialsId: config.credID]]
         ])
     }
 
